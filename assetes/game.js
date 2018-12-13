@@ -4,10 +4,10 @@ alert("Welcome to my guess game! You'll have 20 chances to get it right. Enjoy!'
     
 var
     wins = 0,
-    wrongAnswers = 0;
-    losses=0;
+    losses = 0;
+    lost=0;
 console.log(wins);
-console.log(wrongAnswers);
+console.log(losses);
 
 
 
@@ -62,9 +62,9 @@ document.onkeyup = function (event) {
         console.log(userGuess);
         console.log(wordArray);
     } else {
-        wrongAnswers++;
+        losses++;
     }
-    if (wrongAnswers == 20) {
+    if (losses == 20) {
         startNewRound();
         alert("You lost, the Automobile manufacture was " + secretWord + " Would you like to try again?");
     }
@@ -90,7 +90,7 @@ document.onkeyup = function (event) {
 
 function startNewRound() {
     wins += 1;
-    wrongAnswers = 0;
+    losses = 0;
     userGuesses = []
     pickNewWord()
 }
@@ -121,8 +121,8 @@ function updateWordOnPage() {
 function updateScoreboard() {
     var winsDiv = document.getElementById('wins');
     winsDiv.textContent = wins;
-    var wrongAnswersDiv = document.getElementById('wrongAnswers');
-    wrongAnswersDiv.textContent = wrongAnswers;
+    var lossesDiv = document.getElementById('losses');
+    lossesDiv.textContent = losses;
 }
 
 function updateUserGuessesOnPage() {
